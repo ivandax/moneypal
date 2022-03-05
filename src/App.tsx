@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider, ThemeProps } from "styled-components";
 
 // Views
 import { Welcome } from "./presentation/Welcome";
@@ -18,16 +19,22 @@ const routes: Path[] = [
     { route: "/welcome", label: "Login" },
 ];
 
+const customTheme = { headerColor: "#00cc66" };
+
+export type CustomTheme = ThemeProps<typeof customTheme>;
+
 function App(): JSX.Element {
     return (
         <>
-            <BrowserRouter>
-                <Header routes={routes} />
-                <Routes>
-                    <Route path="/welcome" element={<Welcome />} />
-                    <Route path="/" element={<Main />} />
-                </Routes>
-            </BrowserRouter>
+            <ThemeProvider theme={customTheme}>
+                <BrowserRouter>
+                    <Header routes={routes} />
+                    <Routes>
+                        <Route path="/welcome" element={<Welcome />} />
+                        <Route path="/" element={<Main />} />
+                    </Routes>
+                </BrowserRouter>
+            </ThemeProvider>
         </>
     );
 }

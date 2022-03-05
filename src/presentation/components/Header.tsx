@@ -2,12 +2,12 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { Path } from "../../App";
+import { Path, CustomTheme } from "../../App";
 
 const Toolbar = styled.div`
     display: flex;
     align-items: center;
-    background-color: lightblue;
+    background-color: ${({ theme }: CustomTheme): string => theme.headerColor};
     font-size: 1rem;
     padding: 1em 1em;
 `;
