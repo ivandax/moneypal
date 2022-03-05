@@ -9,7 +9,7 @@ const Toolbar = styled.div`
     align-items: center;
     background-color: ${({ theme }: CustomTheme): string => theme.headerColor};
     font-size: 1rem;
-    padding: 1em 1em;
+    padding: 0.5em 0.5em;
 `;
 
 const LinkContainer = styled.div`
