@@ -1,6 +1,14 @@
-# Goal
+# Goal of this Repo
 
-Project to test Styled Components
+This is a simple React application to test:
+
+- Recoil state management
+- Visuals using styled components
+- Testing
+
+It's a simple expense tracker:
+
+![alt text](./simple.PNG)
 
 # Getting Started with Create React App
 
