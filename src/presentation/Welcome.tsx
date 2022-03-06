@@ -1,5 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+
+// State
+import { userState } from "../State";
+
+// Helpers
+import { generateId } from "../services/helpers";
 
 const FormContainer = styled.form`
     width: 100%;
@@ -30,8 +37,21 @@ const Button = styled.button`
 
 export function Welcome(): JSX.Element {
     const [data, setData] = React.useState({ name: "", email: "" });
+    const [message, setMessage] = React.useState("");
+    const [userStateValue, setUserStateValue] = useRecoilState(userState);
+
+    function handleSubmit(event: React.SyntheticEvent): void {
+        setMessage("");
+        event.preventDefault();
+        if (data.name !== "" && data.email !== "") {
+            setUserStateValue({ email: data.email, name: data.name, id: generateId() });
+        } else {
+            setMessage("Name and email must be filled out");
+        }
+    }
+
     return (
-        <FormContainer>
+        <FormContainer onSubmit={handleSubmit}>
             <Label>
                 Email:
                 <Input
@@ -51,6 +71,12 @@ export function Welcome(): JSX.Element {
                 />
             </Label>
             <Button type="submit">Login</Button>
+            <p>
+                {userStateValue === null
+                    ? "No user is logged in"
+                    : `Current user is ${userStateValue.name}`}
+            </p>
+            <p>{message}</p>
         </FormContainer>
     );
 }
