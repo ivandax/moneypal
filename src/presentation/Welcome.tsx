@@ -44,7 +44,7 @@ export function Welcome(): JSX.Element {
         setMessage("");
         event.preventDefault();
         if (data.name !== "" && data.email !== "") {
-            setUserStateValue({ email: data.email, name: data.name, id: generateId() });
+            setUserStateValue({ email: data.email, name: data.name, id: generateId("user") });
         } else {
             setMessage("Name and email must be filled out");
         }

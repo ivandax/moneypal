@@ -2,9 +2,13 @@ import { atom, useRecoilSnapshot, useRecoilValue, RecoilState } from "recoil";
 import { useEffect } from "react";
 
 // Types
-import { User } from "./services/types";
+import { User, ExpenseEntry } from "./services/types";
+
+// API
+import { initialExpenses } from "./services/api";
 
 const userState = atom<User | null>({ key: "user", default: null });
+const expensesState = atom<ExpenseEntry[]>({ key: "expenses", default: initialExpenses });
 
 export type StateValue = User | null;
 
@@ -36,4 +40,4 @@ const RecoilObserver = ({ node, onChange }: RecoilObserverProps): null => {
     return null;
 };
 
-export { userState, DebugObserver, RecoilObserver };
+export { userState, expensesState, DebugObserver, RecoilObserver };
