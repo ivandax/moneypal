@@ -2,8 +2,15 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
+const sum = (a: number, b: number): number => a + b;
+
+test("simple jest sum", () => {
+    expect(sum(4, 5)).toBe(9);
+});
+
+test("renders MoneyPal brand", () => {
     render(<App />);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+    screen.debug();
+    const brandElement = screen.getByText(/MoneyPal/i);
+    expect(brandElement).toBeInTheDocument();
 });

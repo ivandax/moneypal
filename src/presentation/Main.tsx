@@ -20,6 +20,7 @@ export function Main(): JSX.Element {
     const expenses = useRecoilValue(expensesState);
     return (
         <>
+            <button>Click Me</button>
             <Content>
                 {expenses.map((item) => (
                     <ExpenseCard key={item.id} item={item} />
