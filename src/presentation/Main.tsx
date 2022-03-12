@@ -9,7 +9,7 @@ import { ExpenseEntry } from "../services/types";
 import { expensesState } from "../State";
 
 // Components
-import { ExpenseCreator } from "./components/Creator";
+import { ExpenseCreator } from "./components/ExpenseCreator";
 
 const Content = styled.div`
     width: "100%";
@@ -26,7 +26,7 @@ export function Main(): JSX.Element {
                 {expenses.map((item) => (
                     <ExpenseCard key={item.id} item={item} />
                 ))}
-                <ExpenseCreator expensesState={expensesState} />
+                <ExpenseCreator expensesState={expensesState} color="blue" />
             </Content>
         </>
     );

@@ -24,9 +24,10 @@ const AddButton = styled.button`
 
 interface ExpenseCreatorProps {
     expensesState: RecoilState<ExpenseEntry[]>;
+    color: string;
 }
 
-export function ExpenseCreator({ expensesState }: ExpenseCreatorProps): JSX.Element {
+export function ExpenseCreator({ expensesState, color }: ExpenseCreatorProps): JSX.Element {
     const initialData = { category: "", comment: "", amount: 0 };
     const [data, setData] = React.useState(initialData);
     const { category, comment, amount } = data;
@@ -41,7 +42,7 @@ export function ExpenseCreator({ expensesState }: ExpenseCreatorProps): JSX.Elem
         }
     }
     return (
-        <Creator>
+        <Creator style={{ color: color }}>
             <CreatorInput
                 placeholder="Category"
                 value={category}
